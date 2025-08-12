@@ -1,0 +1,13 @@
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+.terraform/
+*.log
+
+# Ignore big archives or ISOs
+*.zip
+*.tar.gz
+*.iso
+
+# Ignore temp files
+*.tmp
