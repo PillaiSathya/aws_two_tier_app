@@ -33,3 +33,26 @@ variable "key_name" {
   type        = string
   default     = ""
 }
+
+
+# Private subnets for RDS
+variable "private_subnet1_cidr" {
+  type    = string
+  default = "10.0.2.0/24"
+}
+
+variable "private_subnet2_cidr" {
+  type    = string
+  default = "10.0.3.0/24"
+}
+
+# RDS settings (we'll pass username/password via tfvars, not commit)
+variable "db_name" {
+  type    = string
+  default = "appdb"
+}
+
+variable "db_username" { type = string }
+
+variable "db_password" { type = string }
+
