@@ -1,6 +1,13 @@
 “This project deploys a 2-tier application (web + database) on AWS using Terraform and AWS free tier resources.”
 
+[![Terraform](https://img.shields.io/badge/Terraform-0.13-blue)] ![AWS Free Tier](https://img.shields.io/badge/AWS-Free%20Tier-orange)
+
 # AWS Two-Tier App Terraform Deployment
+
+| Component | Resource Created        |
+| --------- | ----------------------- |
+| Web Tier  | EC2 with Nginx (Public) |
+| DB Tier   | RDS MySQL (Private)     |
 
 ## Project Overview
 This project uses Terraform to deploy a two-tier architecture on AWS:
@@ -73,8 +80,20 @@ let’s complete the two-tier app setup by creating a sample DB + table in your 
 
 👉 You’re already inside the MySQL prompt (MySQL [(none)]>), so run these commands step by step:
 
-1️⃣ Create a database
-CREATE DATABASE myappdb;
+[ec2-user@ip-10-0-1-78 ~]$ mysql -h sathya-mysql.ct8saec4omnf.ap-south-1.rds.amazonaws.com -u appuser -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'appuser'@'10.0.1.78' (using password: YES)
+[ec2-user@ip-10-0-1-78 ~]$ mysql -h sathya-mysql.ct8saec4omnf.ap-south-1.rds.amazonaws.com -u appuser -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 67
+Server version: 8.0.42 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> CREATE DATABASE myappdb;
 
 2️⃣ Switch to the new DB
 USE myappdb;
@@ -104,7 +123,8 @@ MySQL [myappdb]> SELECT * FROM users;
 2 rows in set (0.00 sec)
 EC2 App Tier → RDS DB Tier connectivity is working. 🚀
 
-Cleanup
+**🗑️ Cleanup (Important! Runs all resource destroy):**
+
 To destroy all resources and avoid billing:
 
 emphasize that RDS must be destroyed or it may incur charges even after t2.micro free tier.
@@ -122,7 +142,7 @@ Make sure your .pem key file permissions are secure.
 
 This Terraform code is for learning/demo purpose — do not use in production without security review.
 
-Author
+Author Block
 Sathya Pillai Sudalai
 GitHub: https://github.com/PillaiSathya
 
