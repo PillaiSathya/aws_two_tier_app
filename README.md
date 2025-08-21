@@ -43,6 +43,10 @@ Confirm by typing yes.
 
 5. Once apply is done, note the public IP output.
 
+Screenshots
+
+`![terraform output](./terraform/terraform_output.png)
+
 Open your browser and visit:
 
 cpp
@@ -56,8 +60,54 @@ Screenshot of the Nginx default page served by the EC2 instance.
 
 `![Nginx Welcome Page](./terraform/nginx-welcome.png)
 
+ADD CONNECTION TEST : EC2 can connect to RDS by including:
+
+ssh -i "terraform-key-mumbai.pem" ec2-user@13.233.142.207
+# then inside:
+sudo yum install -y mariadb
+mysql -h mydb.xxxx.ap-south-1.rds.amazonaws.com -u appuser -p
+[ec2-user@ip-10-0-1-78 ~]$ curl localhost
+<h1>Hello from Sathya - Terraform provisioned Nginx</h1>
+
+let’s complete the two-tier app setup by creating a sample DB + table in your RDS from the EC2 instance.
+
+👉 You’re already inside the MySQL prompt (MySQL [(none)]>), so run these commands step by step:
+
+1️⃣ Create a database
+CREATE DATABASE myappdb;
+
+2️⃣ Switch to the new DB
+USE myappdb;
+
+3️⃣ Create a table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+
+4️⃣ Insert some sample data
+INSERT INTO users (name, email) VALUES 
+('Sathya', 'sathya@example.com'),
+('Shobi Kutty', 'shobi@example.com');
+
+5️⃣ Verify the data
+SELECT * FROM users;
+
+MySQL [myappdb]> SELECT * FROM users;
++----+-------------+--------------------+
+| id | name        | email              |
++----+-------------+--------------------+
+|  1 | Sathya      | sathya@example.com |
+|  2 | Shobi Kutty | shobi@example.com  |
++----+-------------+--------------------+
+2 rows in set (0.00 sec)
+EC2 App Tier → RDS DB Tier connectivity is working. 🚀
+
 Cleanup
 To destroy all resources and avoid billing:
+
+emphasize that RDS must be destroyed or it may incur charges even after t2.micro free tier.
 
 bash
 
