@@ -1,0 +1,5 @@
+key_name       = "sathya-key"
+ssh_allowed_ip = "92.97.12.223/32"
+db_name        = "appdb"
+db_username    = "appuser"
+db_password    = "StrongPassw0rd!"
