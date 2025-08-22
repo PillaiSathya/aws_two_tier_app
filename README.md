@@ -93,7 +93,7 @@ Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MySQL [(none)]> CREATE DATABASE myappdb;
+1️⃣ MySQL [(none)]> CREATE DATABASE myappdb;
 
 2️⃣ Switch to the new DB
 USE myappdb;
