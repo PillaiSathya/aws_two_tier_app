@@ -83,4 +83,4 @@ Backend (RDS MySQL)
 
 Output for both :
 
-![ Output] (Test_Flask_app.png)
+![Flask App Screenshot](Test_Flask_app.png)
