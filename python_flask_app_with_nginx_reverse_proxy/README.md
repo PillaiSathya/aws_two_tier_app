@@ -83,4 +83,4 @@ Backend (RDS MySQL)
 
 Output for both :
 
-`![ Output] (Test_Flask_app.png)
+![ Output] (Test_Flask_app.png)
