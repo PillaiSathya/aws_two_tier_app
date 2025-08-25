@@ -83,4 +83,4 @@ Backend (RDS MySQL)
 
 Output for both :
 
-`![ Output] (./python_flask_app_with_nginx_reverse_proxy/ Test_Flask_app.png)
+`![ Output] (Test_Flask_app.png)
