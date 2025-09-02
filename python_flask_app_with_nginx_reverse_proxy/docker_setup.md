@@ -79,7 +79,7 @@ Part 3 → http://localhost:8080
 
 Each part should display the user list in the browser and below is one of it.
 
-! [localhost output] (aws_two_tier_app/docs/output_localhost.png)
+! [localhost output](aws_two_tier_app/docs/output_localhost.png)
 
 🎉 Congratulations! You’ve deployed a Flask + MySQL app from scratch → Dockerized → scaled with Compose → put behind Nginx → connected to AWS RDS.  
 
